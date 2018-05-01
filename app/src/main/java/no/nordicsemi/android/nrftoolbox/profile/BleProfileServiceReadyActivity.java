@@ -39,6 +39,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -224,7 +225,7 @@ public abstract class BleProfileServiceReadyActivity<E extends BleProfileService
 		if (!isBLEEnabled()) {
 			showBLEDialog();
 		}
-
+		Logger.d(mLogSession, "My Test Only");
 		// Restore the old log session
 		if (savedInstanceState != null) {
 			final Uri logUri = savedInstanceState.getParcelable(LOG_URI);
@@ -421,8 +422,13 @@ public abstract class BleProfileServiceReadyActivity<E extends BleProfileService
 
 	/**
 	 * Called when user press CONNECT or DISCONNECT button. See layout files -> onClick attribute.
+	 * setDefaultUI: abstract method that update screen when connect is press. it should be define
+	 * 					in itsbuttonActivity.
+	 * getFilterUUID: abstract method that get set foter for searching service UUID. it should be
+	 * 					defined in itsbuttonActivity.
 	 */
 	public void onConnectClicked(final View view) {
+		Log.v("MyT","When connect click");
 		if (isBLEEnabled()) {
 			if (mService == null) {
 				setDefaultUI();

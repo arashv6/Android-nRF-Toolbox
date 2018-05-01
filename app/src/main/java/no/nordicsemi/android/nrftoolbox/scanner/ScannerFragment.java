@@ -37,6 +37,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -80,6 +81,10 @@ public class ScannerFragment extends DialogFragment {
 
 	private boolean mIsScanning = false;
 
+	/*
+	*	Bundle :  A mapping from String keys to various Parcelable values.
+	*
+	*/
 	public static ScannerFragment getInstance(final UUID uuid) {
 		final ScannerFragment fragment = new ScannerFragment();
 
@@ -143,19 +148,26 @@ public class ScannerFragment extends DialogFragment {
 		super.onDestroyView();
 	}
 
+	/*
+	*	this method will be run on creation of dialog according to layout (fragment_device_selection)
+	*	then start BLE peripheral scanning.
+	*
+	*/
 	@NonNull
     @Override
 	public Dialog onCreateDialog(final Bundle savedInstanceState) {
 		final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 		final View dialogView = LayoutInflater.from(getActivity()).inflate(R.layout.fragment_device_selection, null);
 		final ListView listview = dialogView.findViewById(android.R.id.list);
-
+		Log.v(TAG,"Enter to show scan BLE");
 		listview.setEmptyView(dialogView.findViewById(android.R.id.empty));
 		listview.setAdapter(mAdapter = new DeviceListAdapter(getActivity()));
 
 		builder.setTitle(R.string.scanner_title);
 		final AlertDialog dialog = builder.setView(dialogView).create();
+
 		listview.setOnItemClickListener((parent, view, position, id) -> {
+			Log.v(TAG, "click on founded devices");
 			stopScan();
 			dialog.dismiss();
 			final ExtendedBluetoothDevice d = (ExtendedBluetoothDevice) mAdapter.getItem(position);

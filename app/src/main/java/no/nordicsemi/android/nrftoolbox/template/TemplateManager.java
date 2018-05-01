@@ -41,9 +41,9 @@ public class TemplateManager extends BleManager<TemplateManagerCallbacks> {
 	private static final String TAG = "TemplateManager";
 
 	/** The service UUID */
-	public final static UUID SERVICE_UUID = UUID.fromString("0000180D-0000-1000-8000-00805f9b34fb"); // TODO change the UUID to your match your service
+	public final static UUID SERVICE_UUID = UUID.fromString("0000ff01-0000-1000-8000-00805f9b34fb"); // TODO change the UUID to your match your service
 	/** The characteristic UUID */
-	private static final UUID MEASUREMENT_CHARACTERISTIC_UUID = UUID.fromString("00002A37-0000-1000-8000-00805f9b34fb"); // TODO change the UUID to your match your characteristic
+	private static final UUID MEASUREMENT_CHARACTERISTIC_UUID = UUID.fromString("0000ff02-0000-1000-8000-00805f9b34fb"); // TODO change the UUID to your match your characteristic
 
 	// TODO add more services and characteristics, if required
 	private BluetoothGattCharacteristic mCharacteristic;

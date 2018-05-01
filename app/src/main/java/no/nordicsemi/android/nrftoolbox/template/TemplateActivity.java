@@ -72,11 +72,17 @@ public class TemplateActivity extends BleProfileServiceReadyActivity<TemplateSer
 		super.onDestroy();
 		LocalBroadcastManager.getInstance(this).unregisterReceiver(mBroadcastReceiver);
 	}
-
+	/*
+	*This function will show defualt view when connect is click
+	*
+	*
+	* @Note: call from BleProfileServiceReadyActivity.
+	*/
 	@Override
 	protected void setDefaultUI() {
 		// TODO clear your UI
-		mValueView.setText(R.string.not_available_value);
+		mValueView.setText("+");
+		//mValueView.setText(R.string.not_available_value);
 	}
 
 	@Override
@@ -125,7 +131,8 @@ public class TemplateActivity extends BleProfileServiceReadyActivity<TemplateSer
 	protected UUID getFilterUUID() {
 		// TODO this method may return the UUID of the service that is required to be in the advertisement packet of a device in order to be listed on the Scanner dialog.
 		// If null is returned no filtering is done.
-		return TemplateManager.SERVICE_UUID;
+		//return TemplateManager.SERVICE_UUID;
+        return null;
 	}
 
 	@Override

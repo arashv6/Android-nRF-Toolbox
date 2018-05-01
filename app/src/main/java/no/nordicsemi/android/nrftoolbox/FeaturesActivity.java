@@ -71,6 +71,7 @@ public class FeaturesActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_features);
 
+		//M:Set a Toolbar to act as the ActionBar for this Activity window.
         final Toolbar toolbar = findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(toolbar);
 
